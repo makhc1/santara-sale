@@ -1,20 +1,40 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Button from '../ui/Button'
 
+
+const HERO_IMG = "https://i.ibb.co.com/0pc0yqj8/PRICE-4.png"
+
 export default function Hero() {
+  const [isLoaded, setIsLoaded] = useState(false)
+
   return (
-    <section className="relative w-full h-screen min-h-[700px] bg-black overflow-hidden">
-      <div className="absolute inset-0">
+    <section className="relative w-full h-screen min-h-[700px] bg-[#111] overflow-hidden">
+      
+      {/* Gambar tersembunyi buat trigger loading */}
+      <img 
+        src={HERO_IMG} 
+        alt="" 
+        className="hidden" 
+        onLoad={() => setIsLoaded(true)} 
+      />
+
+      {/* Background Gambar Utama dengan Fade In */}
+      <div 
+        className={`absolute inset-0 transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+      >
         <img 
-          src="https://static.wixstatic.com/media/c67d9c_85827bc81d9e455a907c68583b61af86~mv2.png/v1/fill/w_1070,h_602,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/PRICE%20(3).png" 
+          src={HERO_IMG} 
           alt="SANTARA Universe" 
           className="w-full h-full object-contain object-center scale-110 md:scale-100"
         />
       </div>
 
+      {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
 
+      {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-28 mx-auto max-w-[1440px] px-5 sm:px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

@@ -10,7 +10,7 @@ const features = [
   {
     icon: <Wifi size={28} />,
     title: "Seamless IoT Connectivity",
-    desc: "Utilizing multi-band satellite links and cellular failover, Hachigo maintains a robust connection in both busy urban centers and remote countryside locations."
+    desc: "Utilizing multi-band satellite links and cellular failover, Santara maintains a robust connection in both busy urban centers and remote countryside locations."
   },
   {
     icon: <Cpu size={28} />,
@@ -25,7 +25,7 @@ const features = [
   {
     icon: <Siren size={28} />,
     title: "Advanced Guardian Tech",
-    desc: "Hachigo is more than just a toy—it's an advanced guardian powered by industrial-grade IoT technology and edge computing, built specifically for the needs of modern parents."
+    desc: "Santara is more than just a toy—it's an advanced guardian powered by industrial-grade IoT technology and edge computing, built specifically for the needs of modern parents."
   }
 ]
 
@@ -68,7 +68,7 @@ export default function CharacterShowcase() {
             The Science Behind<br />Safety
           </h2>
           <p className="text-muted text-base md:text-lg leading-relaxed max-w-2xl">
-            Hachigo is more than just a toy—it's an advanced guardian powered by industrial-grade IoT technology and edge computing, built specifically for the needs of modern parents.
+            Santara is more than just a toy—it's an advanced guardian powered by industrial-grade IoT technology and edge computing, built specifically for the needs of modern parents.
           </p>
         </motion.div>
 

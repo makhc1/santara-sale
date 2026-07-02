@@ -2,8 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Button from '../ui/Button'
 
-
-const HERO_IMG = "https://i.ibb.co.com/0pc0yqj8/PRICE-4.png"
+const HERO_IMG = "https://static.wixstatic.com/media/c67d9c_85827bc81d9e455a907c68583b61af86~mv2.png/v1/fill/w_1920,h_1080,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/PRICE%20(3).png"
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -11,7 +10,6 @@ export default function Hero() {
   return (
     <section className="relative w-full h-screen min-h-[700px] bg-[#111] overflow-hidden">
       
-      {/* Gambar tersembunyi buat trigger loading */}
       <img 
         src={HERO_IMG} 
         alt="" 
@@ -19,10 +17,7 @@ export default function Hero() {
         onLoad={() => setIsLoaded(true)} 
       />
 
-      {/* Background Gambar Utama dengan Fade In */}
-      <div 
-        className={`absolute inset-0 transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-      >
+      <div className={`absolute inset-0 transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
         <img 
           src={HERO_IMG} 
           alt="SANTARA Universe" 
@@ -30,11 +25,9 @@ export default function Hero() {
         />
       </div>
 
-      {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
 
-      {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-28 mx-auto max-w-[1440px] px-5 sm:px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -55,10 +48,14 @@ export default function Hero() {
           </p>
           
           <div className="flex items-center gap-4">
-            <Button>Shop Now</Button>
-            <Button variant="outline" className="!border-white/20 !text-white hover:!bg-white hover:!text-foreground">
-              Watch Story
-            </Button>
+            <a href="#new-arrivals">
+              <Button>Shop Now</Button>
+            </a>
+            <a href="#characters">
+              <Button variant="outline" className="!border-white/20 !text-white hover:!bg-white hover:!text-foreground">
+                Watch Story
+              </Button>
+            </a>
           </div>
         </motion.div>
 

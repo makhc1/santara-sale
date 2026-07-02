@@ -29,7 +29,7 @@ export default function App() {
 
     lenisRef.current = lenis
 
-    // Hubungkan Lenis sama GSAP ScrollTrigger biar animasi pas
+    // catch lenis + gsap
     lenis.on('scroll', ScrollTrigger.update)
 
     // Gunakan ticker GSAP buat update Lenis setiap frame

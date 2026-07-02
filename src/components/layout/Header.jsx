@@ -17,26 +17,26 @@ export default function Header() {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background/95 backdrop-blur-md shadow-sm' : 'bg-background'}`}>
         <div className="mx-auto max-w-[1440px] px-5 sm:px-6 lg:px-12 h-16 md:h-20 flex items-center justify-between">
           
-          <div className="flex items-center gap-4 w-1/3">
-            <button onClick={() => setIsMobileOpen(true)} className="md:hidden">
+          <div className="flex items-center gap-6 w-1/3">
+            <button onClick={() => setIsMobileOpen(true)} className="md:hidden text-foreground">
               <Menu size={22} />
             </button>
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted">
-              <a href="#" className="hover:text-foreground transition-colors">New</a>
-              <a href="#" className="hover:text-foreground transition-colors">Characters</a>
-              <a href="#" className="hover:text-foreground transition-colors">Collections</a>
+              <a href="#new-arrivals" className="hover:text-foreground transition-colors">New</a>
+              <a href="#characters" className="hover:text-foreground transition-colors">Characters</a>
+              <a href="#recommendations" className="hover:text-foreground transition-colors">Collections</a>
             </nav>
           </div>
 
-          <a href="#" className="absolute left-1/2 -translate-x-1/2 text-2xl md:text-3xl font-extrabold tracking-tighter">
+          <a href="#" className="absolute left-1/2 -translate-x-1/2 text-2xl md:text-3xl font-extrabold tracking-tighter text-foreground">
             SANTARA
           </a>
 
           <div className="flex items-center justify-end gap-3 sm:gap-4 w-1/3">
-            <button className="hidden sm:block hover:text-accent transition-colors"><Search size={20} /></button>
-            <button className="hover:text-accent transition-colors"><User size={20} /></button>
-            <button className="hover:text-accent transition-colors hidden sm:block"><Heart size={20} /></button>
-            <button className="relative hover:text-accent transition-colors">
+            <button className="hidden sm:block text-foreground hover:text-accent transition-colors"><Search size={20} /></button>
+            <button className="text-foreground hover:text-accent transition-colors"><User size={20} /></button>
+            <button className="text-foreground hover:text-accent transition-colors hidden sm:block"><Heart size={20} /></button>
+            <button className="relative text-foreground hover:text-accent transition-colors">
               <ShoppingBag size={20} />
               <span className="absolute -top-1 -right-1 w-4 h-4 bg-accent text-white text-[9px] font-bold rounded-full flex items-center justify-center">2</span>
             </button>

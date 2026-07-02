@@ -7,7 +7,7 @@ const posts = [
   { id: 2, img: "https://i.ibb.co.com/PvZGbMpY/img2.jpg", likes: 120, comments: 5, span: "" },
   { id: 3, img: "https://i.ibb.co.com/bR1nTtSC/img3.jpg", likes: 98, comments: 8, span: "" },
   { id: 4, img: "https://i.ibb.co.com/zTgK1Zv0/img4.jpg", likes: 312, comments: 24, span: "" },
-  { id: 5, img: "http://i.ibb.co.com/6JF2LJ32/img5.jpg", likes: 156, comments: 9, span: "" },
+  { id: 5, img: "https://i.ibb.co.com/6JF2LJ32/img5.jpg", likes: 156, comments: 9, span: "" },
 ]
 
 export default function Community() {
@@ -39,7 +39,8 @@ export default function Community() {
 
   return (
     <>
-      <section className="py-16 md:py-24 lg:py-32 bg-background">
+      {/* Section digabung jadi 1, ref yang error dihapus */}
+      <section id="community" className="py-16 md:py-24 lg:py-32 bg-background">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -87,7 +88,6 @@ export default function Community() {
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
             onClick={close}
           >
-            {/* Close */}
             <button
               onClick={close}
               className="absolute top-4 right-4 z-10 text-white bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors"
@@ -96,7 +96,6 @@ export default function Community() {
               <X size={22} />
             </button>
 
-            {/* Prev */}
             <button
               onClick={(e) => { e.stopPropagation(); prev() }}
               className="absolute left-4 z-10 text-white bg-white/10 hover:bg-white/20 rounded-full p-3 transition-colors"
@@ -105,7 +104,6 @@ export default function Community() {
               <ChevronLeft size={24} />
             </button>
 
-            {/* Image */}
             <motion.div
               key={activeIndex}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -120,7 +118,6 @@ export default function Community() {
                 alt="Community post"
                 className="max-h-[80vh] max-w-full object-contain rounded-xl"
               />
-              {/* Likes & comments */}
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/50 rounded-b-xl flex gap-5 text-white text-sm font-medium">
                 <span className="flex items-center gap-1.5"><Heart size={16} fill="white" /> {current.likes}</span>
                 <span className="flex items-center gap-1.5"><MessageCircle size={16} /> {current.comments}</span>
@@ -128,7 +125,6 @@ export default function Community() {
               </div>
             </motion.div>
 
-            {/* Next */}
             <button
               onClick={(e) => { e.stopPropagation(); next() }}
               className="absolute right-4 z-10 text-white bg-white/10 hover:bg-white/20 rounded-full p-3 transition-colors"

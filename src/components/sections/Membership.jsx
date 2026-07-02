@@ -53,6 +53,7 @@ export default function CharacterShowcase() {
   }, [])
 
   return (
+    <section id="membership" ref={sectionRef} className="py-16 md:py-24 lg:py-32 bg-[#f0f4f0] overflow-hidden">
     <section ref={sectionRef} className="py-16 md:py-24 lg:py-32 bg-[#f0f4f0] overflow-hidden">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-6 lg:px-12">
 
@@ -101,6 +102,7 @@ export default function CharacterShowcase() {
         </div>
 
       </div>
+    </section>
     </section>
   )
 }

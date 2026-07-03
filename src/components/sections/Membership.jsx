@@ -3,34 +3,16 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { motion } from 'framer-motion'
 import { Wifi, Cpu, ShieldAlert, Siren } from 'lucide-react'
+import { useLanguage } from '../../context/LanguageContext'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const features = [
-  {
-    icon: <Wifi size={28} />,
-    title: "Seamless IoT Connectivity",
-    desc: "Utilizing multi-band satellite links and cellular failover, Santara maintains a robust connection in both busy urban centers and remote countryside locations."
-  },
-  {
-    icon: <Cpu size={28} />,
-    title: "Intelligent Edge Computing",
-    desc: "Critical alerts are processed locally on the toy's hardware, reducing latency and ensuring emergency protocols are triggered instantly, without cloud delays."
-  },
-  {
-    icon: <ShieldAlert size={28} />,
-    title: "Dual-Layer Security System",
-    desc: "A discrete physical SOS button empowers children to immediately signal for help, while an integrated 120dB alarm provides instant acoustic deterrence on-site when needed."
-  },
-  {
-    icon: <Siren size={28} />,
-    title: "Advanced Guardian Tech",
-    desc: "Santara is more than just a toy—it's an advanced guardian powered by industrial-grade IoT technology and edge computing, built specifically for the needs of modern parents."
-  }
-]
+// Icon mapping tetap statis karena icon tidak berubah berdasarkan bahasa
+const icons = [<Wifi size={28} />, <Cpu size={28} />, <ShieldAlert size={28} />, <Siren size={28} />]
 
-export default function CharacterShowcase() {
+export default function Membership() {
   const sectionRef = useRef(null)
+  const { t } = useLanguage() // Ambil fungsi translate
 
   useEffect(() => {
     if (!sectionRef.current) return
@@ -54,7 +36,6 @@ export default function CharacterShowcase() {
 
   return (
     <section id="membership" ref={sectionRef} className="py-16 md:py-24 lg:py-32 bg-[#f0f4f0] overflow-hidden">
-    <section ref={sectionRef} className="py-16 md:py-24 lg:py-32 bg-[#f0f4f0] overflow-hidden">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-6 lg:px-12">
 
         {/* Header */}
@@ -64,25 +45,25 @@ export default function CharacterShowcase() {
           viewport={{ once: true }}
           className="max-w-3xl mb-16 md:mb-24"
         >
-          <p className="text-xs font-semibold tracking-[0.25em] uppercase text-accent mb-3">Technology</p>
+          <p className="text-xs font-semibold tracking-[0.25em] uppercase text-accent mb-3">{t.tech.subtitle}</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight mb-5">
-            The Science Behind<br />Safety
+            {t.tech.title1}<br />{t.tech.title2}
           </h2>
           <p className="text-muted text-base md:text-lg leading-relaxed max-w-2xl">
-            Santara is more than just a toy—it's an advanced guardian powered by industrial-grade IoT technology and edge computing, built specifically for the needs of modern parents.
+            {t.tech.desc}
           </p>
         </motion.div>
 
         {/* Feature Grid */}
         <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-          {features.map((feature, i) => (
+          {t.tech.features.map((feature, i) => (
             <div
               key={i}
               className="tech-card bg-white rounded-3xl p-8 md:p-10 shadow-sm hover:shadow-lg transition-shadow duration-500 group"
             >
               {/* Icon */}
               <div className="w-14 h-14 rounded-2xl bg-foreground/5 flex items-center justify-center text-accent mb-6 group-hover:bg-accent/10 transition-colors duration-300">
-                {feature.icon}
+                {icons[i]}
               </div>
 
               {/* Accent Line */}
@@ -102,7 +83,6 @@ export default function CharacterShowcase() {
         </div>
 
       </div>
-    </section>
     </section>
   )
 }

@@ -8,7 +8,7 @@ import MobileMenu from './MobileMenu'
 export default function Header() {
   const { toggleLang, lang, t } = useLanguage()
   const { totalItems, openCartPage } = useCart()
-  const { user, openLogin } = useAuth() // Ambil data user & fungsi openLogin
+  const { user, openLogin, openProfile } = useAuth() // <-- TAMBAHKAN openProfile
   
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
@@ -41,19 +41,19 @@ export default function Header() {
             </button>
             <button className="hidden sm:block text-foreground hover:text-accent transition-colors"><Search size={20} /></button>
             
-            {/* ICON USER (SUDAH DIPERBAIKI) */}
+            {/* ICON USER (UDAH DIPERBAIKI KE PROFILE) */}
             <button 
-              onClick={() => !user ? openLogin() : alert(`Halo, ${user.displayName || user.email}! (Fitur Profile segera hadir)`)} 
+              onClick={() => !user ? openLogin() : openProfile()} 
               className="text-foreground hover:text-accent transition-colors flex items-center gap-1.5"
             >
               <User size={20} />
-              {/* Opsional: Tampilkan nama user jika sudah login */}
+              {/* Nama user akan muncul kalau sudah login */}
               <span className="hidden lg:block text-xs font-medium max-w-[80px] truncate">
-                {user ? (user.displayName || 'Akun') : ''}
+                {user ? (user.displayName || 'Profil') : ''}
               </span>
             </button>
 
-            {/* ICON CART (SUDAH DIPERBAIKI) */}
+            {/* ICON CART */}
             <button 
               onClick={openCartPage} 
               className="relative text-foreground hover:text-accent transition-colors"

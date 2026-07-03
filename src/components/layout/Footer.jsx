@@ -8,6 +8,9 @@ const YoutubeIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" width="20" he
 export default function Footer() {
   const { t } = useLanguage()
 
+  // ---> GANTI URL DIBAWAH INI DENGAN LINK IMGBB KAMU <---
+  const LOGO_SMK20 = "https://i.ibb.co.com/ycBHLNVW/smkn-20-jakarta-removebg-preview.png"; 
+
   return (
     <footer className="bg-foreground text-white pt-16 pb-8">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-6 lg:px-12">
@@ -74,7 +77,25 @@ export default function Footer() {
           <div><h4 className="font-semibold mb-4 text-sm tracking-wider uppercase">{t.footer.follow.title}</h4><div className="flex gap-4 text-white/60"><a href="#" className="hover:text-accent transition-colors"><InstagramIcon /></a><a href="#" className="hover:text-accent transition-colors"><TwitterIcon /></a><a href="#" className="hover:text-accent transition-colors"><YoutubeIcon /></a></div></div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 text-center text-xs text-white/40">{t.footer.copyright}</div>
+        {/* ---> SECTION SUPPORTED BY SMK 20 (BARU DITAMBAHKAN) <--- */}
+        <div className="border-t border-white/10 pt-8 mb-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <span className="text-xs text-white/40 uppercase tracking-[0.2em] font-medium">Supported by</span>
+            <div className="flex items-center gap-3">
+              <img 
+                src={LOGO_SMK20} 
+                alt="Logo SMK Negeri 20 Jakarta" 
+                className="h-8 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+              />
+              <div className="text-center sm:text-left">
+                <p className="text-sm font-semibold text-white/80 leading-tight">SMK Negeri 20 Jakarta</p>
+                <p className="text-[10px] text-white/40 tracking-wider">JAKARTA SELATAN</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="text-center text-xs text-white/40">{t.footer.copyright}</div>
       </div>
     </footer>
   )

@@ -269,7 +269,7 @@ export default function Profile() {
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
             <div className="p-6 border-b border-gray-100 flex justify-between items-center">
               <h3 className="text-lg md:text-xl font-bold text-gray-900">Account Overview</h3>
-              <button className="text-black font-bold text-xs hover:underline">Edit Details</button>
+              <button className="text-black font-bold text-xs hover:underline">Edit Detail</button>
             </div>
             
             <div className="divide-y divide-gray-100">

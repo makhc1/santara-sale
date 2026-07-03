@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Heart, MessageCircle, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useLanguage } from '../../context/LanguageContext'
+
 
 const posts = [
   { id: 1, img: "https://i.ibb.co.com/Z1hfk5Cc/img1.jpg", likes: 234, comments: 12, span: "md:col-span-2 md:row-span-2" },
@@ -11,6 +13,7 @@ const posts = [
 ]
 
 export default function Community() {
+  const { t } = useLanguage()
   const [activeIndex, setActiveIndex] = useState(null)
 
   const isOpen = activeIndex !== null
@@ -48,8 +51,8 @@ export default function Community() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <p className="text-xs font-semibold tracking-[0.25em] uppercase text-accent mb-2">#Santara</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">Community Gallery</h2>
+            <p className="text-xs font-semibold tracking-[0.25em] uppercase text-accent mb-2">{t.community.subtitle}</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">{t.community.title}</h2>
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[220px]">

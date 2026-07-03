@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import Lenis from 'lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { LanguageProvider } from './context/LanguageContext' // <-- YANG INI YANG BELUM ADA
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import Hero from './components/sections/Hero'
@@ -17,36 +18,16 @@ export default function App() {
   const lenisRef = useRef(null)
 
   useEffect(() => {
-    // Inisialisasi Lenis
-    const lenis = new Lenis({
-      duration: 1.4,               // Durasi scroll (makin besar makin lambat/mooth)
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Formula easeOutExpo (super smooth)
-      orientation: 'vertical',     // Arah scroll
-      gestureOrientation: 'vertical',
-      smoothWheel: true,           // Smooth saat pake scroll mouse
-      touchMultiplier: 1.5,        // Kecepatan saat di-swipe di HP/tablet
-    })
-
+    const lenis = new Lenis({ duration: 1.4, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true, touchMultiplier: 1.5 })
     lenisRef.current = lenis
-
-    // catch lenis + gsap
     lenis.on('scroll', ScrollTrigger.update)
-
-    // Gunakan ticker GSAP buat update Lenis setiap frame
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000)
-    })
-    
-    // Matikan lag smoothing GSAP biar Lenis yang ngatur
+    gsap.ticker.add((time) => lenis.raf(time * 1000))
     gsap.ticker.lagSmoothing(0)
-
-    return () => {
-      lenis.destroy()
-    }
+    return () => lenis.destroy()
   }, [])
 
   return (
-    <>
+    <LanguageProvider> {/* <-- YANG INI JUGA YANG BELUM ADA */}
       <Header />
       <main className="overflow-x-hidden">
         <Hero />
@@ -57,6 +38,6 @@ export default function App() {
         <Community />
       </main>
       <Footer />
-    </>
+    </LanguageProvider>
   )
 }

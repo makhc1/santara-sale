@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Heart, Eye, ShoppingBag } from 'lucide-react'
 import Badge from './Badge'
+import { useCart } from '../../context/CartContext' // <-- TAMBAHAN INI
+import { useLanguage } from '../../context/LanguageContext' // <-- TAMBAHAN INI
 
 function formatRupiah(num) {
   return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", minimumFractionDigits: 0 }).format(num)
@@ -9,6 +11,8 @@ function formatRupiah(num) {
 
 export default function ProductCard({ product, index = 0 }) {
   const [isLiked, setIsLiked] = useState(false)
+  const { addToCart } = useCart() // <-- TAMBAHAN INI
+  const { t } = useLanguage() // <-- TAMBAHAN INI
   const isOut = product.badge === 'outofstock'
 
   return (
@@ -44,9 +48,19 @@ export default function ProductCard({ product, index = 0 }) {
 
         {!isOut && (
           <div className="absolute bottom-3 left-3 right-3 flex gap-2 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-10">
-            <button className="flex-1 bg-foreground text-white text-xs font-semibold tracking-wide uppercase py-2.5 rounded-lg hover:bg-accent transition-colors flex items-center justify-center gap-1.5">
-              <ShoppingBag size={14} /> Add to Cart
+            
+            {/* --- YANG DIUBAH DI BAWAH INI --- */}
+            <button 
+              onClick={(e) => { 
+                e.stopPropagation(); 
+                addToCart(product); // <-- Fungsi Cart dipanggil di sini
+              }} 
+              className="flex-1 bg-foreground text-white text-xs font-semibold tracking-wide uppercase py-2.5 rounded-lg hover:bg-accent transition-colors flex items-center justify-center gap-1.5"
+            >
+              <ShoppingBag size={14} /> {t.productCard.addToCart}
             </button>
+            {/* ------------------------------ */}
+
             <button className="w-10 bg-white/90 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-white transition-colors">
               <Eye size={16} className="text-foreground" />
             </button>

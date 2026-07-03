@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react'
+// HAPUS: import { Link } from 'react-router-dom'
 import { Search, User, Heart, ShoppingBag, Menu, Globe } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import { useCart } from '../../context/CartContext' // Pastikan ini ada
 import MobileMenu from './MobileMenu'
 
 export default function Header() {
   const { toggleLang, lang, t } = useLanguage()
+  const { totalItems, openCartPage } = useCart() // <-- TAMBAHKAN openCartPage
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
 
@@ -36,11 +39,17 @@ export default function Header() {
             </button>
             <button className="hidden sm:block text-foreground hover:text-accent transition-colors"><Search size={20} /></button>
             <button className="text-foreground hover:text-accent transition-colors"><User size={20} /></button>
-            <button className="text-foreground hover:text-accent transition-colors hidden sm:block"><Heart size={20} /></button>
-            <button className="relative text-foreground hover:text-accent transition-colors">
+            
+            {/* UBAH LINK JADI BUTTON */}
+            <button onClick={openCartPage} className="relative text-foreground hover:text-accent transition-colors">
               <ShoppingBag size={20} />
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-accent text-white text-[9px] font-bold rounded-full flex items-center justify-center">2</span>
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-accent text-white text-[9px] font-bold rounded-full flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
             </button>
+
           </div>
         </div>
       </header>

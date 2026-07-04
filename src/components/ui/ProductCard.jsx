@@ -10,7 +10,8 @@ function formatRupiah(num) {
   return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", minimumFractionDigits: 0 }).format(num)
 }
 
-export default function ProductCard({ product, index = 0 }) {
+// ---> TAMBAHKAN hidePrice = false DI SINI <---
+export default function ProductCard({ product, index = 0, hidePrice = false }) {
   const [isLiked, setIsLiked] = useState(false)
   
   // INISIALISASI HOOKS
@@ -68,7 +69,6 @@ export default function ProductCard({ product, index = 0 }) {
         {!isOut && (
           <div className="absolute bottom-3 left-3 right-3 flex gap-2 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-10">
             
-            {/* TOMBOL ADD TO CART YANG SUDAH DIPERBAIKI */}
             <button 
               onClick={handleAddToCart} 
               className="flex-1 bg-foreground text-white text-xs font-semibold tracking-wide uppercase py-2.5 rounded-lg hover:bg-accent transition-colors flex items-center justify-center gap-1.5"
@@ -86,10 +86,14 @@ export default function ProductCard({ product, index = 0 }) {
       <div className="p-4 mt-auto">
         <p className="text-[11px] tracking-[0.15em] uppercase text-muted mb-1">{product.series}</p>
         <h3 className="text-sm font-semibold text-foreground mb-2 truncate group-hover:text-accent transition-colors">{product.name}</h3>
-        <div className="flex items-center gap-2">
-          <span className="text-sm font-bold text-foreground">{formatRupiah(product.price)}</span>
-          {product.originalPrice && <span className="text-xs text-muted line-through">{formatRupiah(product.originalPrice)}</span>}
-        </div>
+        
+        {/* ---> BUNGKUS HARGA DENGAN LOGIKA INI <--- */}
+        {!hidePrice && (
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-bold text-foreground">{formatRupiah(product.price)}</span>
+            {product.originalPrice && <span className="text-xs text-muted line-through">{formatRupiah(product.originalPrice)}</span>}
+          </div>
+        )}
       </div>
     </motion.div>
   )

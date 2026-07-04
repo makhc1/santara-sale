@@ -37,7 +37,8 @@ export default function NewArrivals() {
         <div ref={scrollRef} className="flex gap-4 sm:gap-5 lg:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory px-5 sm:px-6 lg:px-12 pb-4 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {newArrivals.map((product, i) => (
             <div key={product.id} className="snap-start shrink-0 w-[72vw] sm:w-[45vw] md:w-[32vw] lg:w-[24vw] xl:w-[22vw]">
-              <ProductCard product={product} index={i} />
+              {/* TAMBAHKAN hidePrice DI SINI */}
+              <ProductCard product={product} index={i} hidePrice={true} />
             </div>
           ))}
         </div>

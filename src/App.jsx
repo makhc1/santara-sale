@@ -24,7 +24,7 @@ function AppContent() {
   const { isCartPageOpen } = useCart()
   const { isLoginOpen, isProfileOpen } = useAuth()
 
-  // 1. SETUP LENIS (Smooth Scroll)
+  // setup lenis
   useEffect(() => {
     const lenis = new Lenis({ duration: 1.4, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true, touchMultiplier: 1.5 })
     lenisRef.current = lenis
@@ -34,7 +34,7 @@ function AppContent() {
     return () => lenis.destroy()
   }, [])
 
-  // 2. FIX NAVBAR LINK SETELAH PINDAH HALAMAN
+  
   useEffect(() => {
     // Cek jika sedang di Home (bukan di Cart, Login, atau Profile)
     if (!isCartPageOpen && !isLoginOpen && !isProfileOpen) {
